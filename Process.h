@@ -1,3 +1,6 @@
+#ifndef PROCESS_H
+#define PROCESS_H
+
 #include <string>
 #include "ProcessParser.h"
 
@@ -82,3 +85,5 @@ string Process::getProcess(){
             + this->upTime.substr(0,5) + "   " 
             + this->cmd.substr(0,5) + "... "); 
 }
+
+#endif

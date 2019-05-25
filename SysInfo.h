@@ -1,3 +1,6 @@
+#ifndef SYSINFO_H
+#define SYSINFO_H
+
 #include <string>
 #include <iostream>
 #include <vector>
@@ -47,7 +50,7 @@ public:
 };
 
 /**
- * @function: get the cpu percentage ussage information about every core. 
+ * @function: get the cpu  information about every core of the previous time. 
  * @param: int ,numbers of cores.
  * @return: void 
  */
@@ -65,7 +68,7 @@ void SysInfo::getOtherCores(size_t _size){
 }
 
 /**
- * @function: get the lateset cpu pecentage usage information.
+ * @function: set the cpu information of previous time.
  * @param: void
  * @return void
  */
@@ -74,7 +77,8 @@ void SysInfo::setLastCpuMeasures(){
 }
 
 /**
- * @function: 
+ * @function: calculate the cpu core usage percentage in sapn of short time, 
+ *  and upadate last core stats, set the corer usage in coresStat[]. 
  * @param: void. 
  * @return: void.
  */
@@ -122,7 +126,7 @@ std::vector<std::string> SysInfo::getCoresStats()const{
         float check = 0;
         if(!this->coresStats[i].empty())
             check = stof(this->coresStats[i]);
-        if(!bool(check) || this->coresStats[i] == "nan"){
+        if(check == 0 || this->coresStats[i] == "nan"){
             return std::vector<std::string>();
         }
         temp += Util::getProgressBar(this->coresStats[i]);
@@ -158,3 +162,6 @@ std::string SysInfo::getThreads()const {
 std::string SysInfo::getOSName()const {
     return this->OSname;
 }
+
+
+#endif

@@ -1,3 +1,6 @@
+#ifndef PROCESSPASER_H
+#define PROCESSPASER_H
+
 #include <algorithm>
 #include <iostream>
 #include <math.h>
@@ -491,3 +494,4 @@ float ProcessParser::getSysIdleCpuTime(vector<string> values) {
 
 }
 
+#endif

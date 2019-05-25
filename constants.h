@@ -1,5 +1,5 @@
-#ifndef PATH_H
-#define PATH_H
+#ifndef CONSTANTS_H
+#define CONSTANTS_H
 
 #include <string>
 using namespace std;

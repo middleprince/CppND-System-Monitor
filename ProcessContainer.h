@@ -1,3 +1,6 @@
+#ifndef PROCESSCONTAINER_H
+#define PROCESSCONTAINER_H
+
 #include "Process.h"
 #include <vector>
 class ProcessContainer{
@@ -69,3 +72,5 @@ std::vector<std::vector<std::string> > ProcessContainer::getList(){
    }
     return values;
 }
+
+#endif
