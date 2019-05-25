@@ -147,8 +147,8 @@ long int ProcessParser::getSysUpTime() {
     ifstream instream;
     long int result;
     Util::getStream((Path::basePath() + Path::upTimePath()), instream);
-    string str = line;
-    istringstream buf(str);
+    getline(instream, line);
+    istringstream buf(line);
     istream_iterator<string> beg(buf), end;
     vector<string> values(beg, end);
 
