@@ -57,7 +57,6 @@ std::vector<std::vector<std::string> > ProcessContainer::getList(){
     }
     // attention! declaring the lastindex to be type size_t
     size_t lastIndex = 0;
-    // attention! declaring the index i  to be type size_t
     for (size_t i=0; i<stringifiedList.size();++i){
         if(i %10 == 0 && i > 0){
           std::vector<std::string>  sub(&stringifiedList[i-10], &stringifiedList[i]);
