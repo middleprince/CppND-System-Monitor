@@ -110,7 +110,7 @@ string ProcessParser::getVmSize(string pid) {
         istringstream buf(line);
         istream_iterator<string> beg(buf), end;
         vector<string>  values(beg, end);
-        result = stof(values[1]) / 1024.0f;
+        result = stof(values[1]) / float(1024);
         break;
         }
     }
@@ -251,9 +251,9 @@ vector<string> ProcessParser::getSysCpuPercent(string coreNumber) {
  */
 float ProcessParser::getSysRamPercent() {
     string line;
-    string name1 = "MemFree";
-    string name2 = "MemAvialible";
-    string name3 = "Buffers";
+    string name1 = "MemFree:";
+    string name2 = "MemAvailable:";
+    string name3 = "Buffers:";
     ifstream instream;
 
     float free_mem = 0;
@@ -288,7 +288,7 @@ float ProcessParser::getSysRamPercent() {
         }
     }
     
-    result = float(100.0f * (1 - free_mem / (total_mem-buffers)));
+    result = float(100.0 * (1 - free_mem / (total_mem-buffers)));
     return result;
 }
 
