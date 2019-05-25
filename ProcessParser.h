@@ -185,7 +185,7 @@ string ProcessParser::getCpuPercent(string pid) {
     float freq = sysconf(_SC_CLK_TCK);
     float total_time = utime + stime + cutime + cstime;
     float system_seconds = uptime - starttime/freq;
-    result = 100.0f * (total_time/freq) / system_seconds;
+    result = 100.0f * ((total_time/freq) / system_seconds);
     return to_string(result);
 
 }
@@ -197,7 +197,7 @@ string ProcessParser::getCpuPercent(string pid) {
  */
 string ProcessParser::getProcUser(string pid) {
    string line;
-   string result;
+   string result = " ";
    string name = "Uid:";
    ifstream instream;
    Util::getStream((Path::basePath() + pid + Path::statusPath()), instream);
@@ -212,15 +212,15 @@ string ProcessParser::getProcUser(string pid) {
        }
    }
    // to retrieve user name by UID form /etc/passwd
-   Util::getStream("/passwd", instream);
+   Util::getStream("/etc/passwd", instream);
    name = "x:" + result;
    while(getline(instream, line)) {
         if(line.find(name) != string::npos) { 
-            result = line.substr(0, line.find(':'));
+            result = line.substr(0, line.find(":"));
             return result;
         }
    }
-   return "";
+   return " ";
 }
 
 /**
