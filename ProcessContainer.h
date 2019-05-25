@@ -13,35 +13,56 @@ public:
     std::vector<std::vector<std::string>> getList();
 };
 
+/**
+ * @function: refresh the process class list on host.
+ * @param: void
+ * @return: void
+ */
 void ProcessContainer::refreshList(){
     std::vector<std::string> pidList = ProcessParser::getPidList();
     this->_list.clear();
-    for(int i=0;i<pidList.size();i++){
-        Process proc(pidList[i]);
+    for (auto pid : pidList){
+        Process proc(pid);
         this->_list.push_back(proc);
     }
 }
+
+/**
+ * @function: get the process infomation string list whuich used to print.
+ * @param: void
+ * @return: string
+ */
 std::string ProcessContainer::printList(){
     std::string result="";
-    for(int i=0;i<this->_list.size();i++){
-        result += this->_list[i].getProcess();
+    for (auto index : this->_list){
+        result += index.getProcess();
     }
     return result;
 }
+
+/**
+ * @function: get all of the pocesses information string in _list and string them
+ * in 2-D vector, one process a vector.
+ * @param: void
+ * @return: vector<vector<sring>>
+ */
 std::vector<std::vector<std::string> > ProcessContainer::getList(){
     std::vector<std::vector<std::string>> values;
     std::vector<std::string> stringifiedList;
-    for(int i=0; i<ProcessContainer::_list.size(); i++){
-        stringifiedList.push_back(ProcessContainer::_list[i].getProcess());
+    for (auto index : this->_list){
+        stringifiedList.push_back(index.getProcess());
     }
-    int lastIndex = 0;
-    for (int i=0; i<stringifiedList.size();i++){
+    // attention! declaring the lastindex to be type size_t
+    size_t lastIndex = 0;
+    // attention! declaring the index i  to be type size_t
+    for (size_t i=0; i<stringifiedList.size();++i){
         if(i %10 == 0 && i > 0){
           std::vector<std::string>  sub(&stringifiedList[i-10], &stringifiedList[i]);
           values.push_back(sub);
           lastIndex = i;
         }
-        if(i == (ProcessContainer::_list.size() - 1) && (i-lastIndex)<10){
+        // the last index of the last one set can no be fullly devided bt 10.
+        if(i == (this->_list.size() - 1) && (i-lastIndex)<10){
             std::vector<std::string> sub(&stringifiedList[lastIndex],&stringifiedList[i+1]);
             values.push_back(sub);
         }

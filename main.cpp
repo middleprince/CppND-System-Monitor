@@ -13,12 +13,22 @@
 
 using namespace std;
 
-
+/**
+ * @function: convert string the C char style string.
+ * @param: string str.
+ * @return: char *cstr.
+ */
 char* getCString(std::string str){
     char * cstr = new char [str.length()+1];
     std::strcpy (cstr, str.c_str());
     return cstr;
 }
+
+/**
+ * @function: write system basic information to console window.
+ * @param: SysInfo sys, WINDOW *sys_win.
+ * @return: void.
+ */
 void writeSysInfoToConsole(SysInfo sys, WINDOW* sys_win){
     sys.setAttributes();
 
@@ -45,6 +55,11 @@ void writeSysInfoToConsole(SysInfo sys, WINDOW* sys_win){
     wrefresh(sys_win);
 }
 
+/**
+ * @function: print process information list to console window.
+ * @param: vector<string> processes, WINDOW *win.
+ * @return: void.
+ */
 void getProcessListToConsole(std::vector<string> processes,WINDOW* win){
 
     wattron(win,COLOR_PAIR(2));
@@ -55,10 +70,17 @@ void getProcessListToConsole(std::vector<string> processes,WINDOW* win){
     mvwprintw(win,1,35,"Uptime:");
     mvwprintw(win,1,44,"CMD:");
     wattroff(win, COLOR_PAIR(2));
-    for(int i=0; i< processes.size();i++){
+    for(int i=0; i< processes.size();++i){
         mvwprintw(win,2+i,2,getCString(processes[i]));
    }
 }
+
+/**
+ * @function: the print control flow whuich to print the system and process info
+ * in span of one seconde.
+ * @param: SysInfo sys, ProcessContainer procs.
+ * @return: void.
+ */
 void printMain(SysInfo sys,ProcessContainer procs){
 	initscr();			/* Start curses mode 		  */
     noecho(); // not printing input values
@@ -93,7 +115,9 @@ void printMain(SysInfo sys,ProcessContainer procs){
     }
 	endwin();
 }
-int main( int   argc, char *argv[] )
+
+
+int main(int argc, char *argv[] )
 {
  //Object which contains list of current processes, Container for Process Class
     ProcessContainer procs;

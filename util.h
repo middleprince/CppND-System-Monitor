@@ -28,7 +28,7 @@ std::string Util::getProgressBar(std::string percent){
     int _size= 50;
     int  boundaries;
     try {
-        boundaries = (stof(percent)/100)*_size;
+        boundaries = int(stof(percent)/100.0f) *_size;
     } catch (...){
     boundaries = 0;
     }
