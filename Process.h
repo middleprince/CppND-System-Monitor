@@ -32,7 +32,7 @@ public:
         //complete for cpu
         this->cpu = ProcessParser::getCpuPercent(pid);
     }
-    void setPid(int pid);
+    //void setPid(int pid);
     string getPid()const;
     string getUser()const;
     string getCmd()const;
@@ -42,9 +42,10 @@ public:
     string getProcess();
 };
 
-void Process::setPid(int pid){
-    this->pid = to_string(pid);
-}
+//  not using the setPid func
+//void Process::setPid(int pid){
+//    this->pid = to_string(pid);
+//}
 
 string Process::getPid()const {
     return this->pid;
@@ -83,7 +84,7 @@ string Process::getProcess(){
             + this->mem.substr(0,5) + "   " 
             + this->cpu.substr(0,5) + "   " 
             + this->upTime.substr(0,5) + "   " 
-            + this->cmd.substr(0,5) + "... "); 
+            + this->cmd.substr(0,10) + "... "); 
 }
 
 #endif
