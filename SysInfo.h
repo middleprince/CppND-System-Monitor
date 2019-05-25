@@ -62,13 +62,14 @@ void SysInfo::getOtherCores(size_t _size){
         this->lastCpuCoresStats.resize(_size);
         this->currentCpuCoresStats = std::vector<std::vector<std::string>>();
         this->currentCpuCoresStats.resize(_size);
+        //get ith core information list.
     for (size_t i=0;i<_size;i++){
         this->lastCpuCoresStats[i] = ProcessParser::getSysCpuPercent(to_string(i));
     }
 }
 
 /**
- * @function: set the cpu information of previous time.
+ * @function: set the overall cpu information of previous time.
  * @param: void
  * @return void
  */
@@ -114,7 +115,7 @@ void SysInfo::setAttributes(){
 }
 
 /**
- * @function: get the information about core status.
+ * @function: get the information about core status to print.
  * @param: void.
  * @return: vector<string>.
  */

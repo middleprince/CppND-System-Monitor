@@ -224,7 +224,7 @@ string ProcessParser::getProcUser(string pid) {
 }
 
 /**
- * @function: get the system cpu percentage of core i
+ * @function: get the system cpu information list  of core i or overall.
  * @param: core i
  * @return : vector<string> ,percentage
  */
