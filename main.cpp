@@ -70,7 +70,7 @@ void getProcessListToConsole(std::vector<string> processes,WINDOW* win){
     mvwprintw(win,1,35,"Uptime:");
     mvwprintw(win,1,44,"CMD:");
     wattroff(win, COLOR_PAIR(2));
-    for(int i=0; i< processes.size();++i){
+    for(size_t i=0; i< processes.size();++i){
         mvwprintw(win,2+i,2,getCString(processes[i]));
    }
 }
