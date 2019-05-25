@@ -147,6 +147,7 @@ long int ProcessParser::getSysUpTime() {
     ifstream instream;
     long int result;
     Util::getStream((Path::basePath() + Path::upTimePath()), instream);
+    getline(instream, line);
     string str = line;
     istringstream buf(str);
     istream_iterator<string> beg(buf), end;
@@ -422,7 +423,7 @@ string ProcessParser::getOSName() {
  */
 size_t ProcessParser::getNumberOfCores() {
     string line;
-    size_t result = 0;
+    int result = 0;
     string name = "cpu cores";
     ifstream instream;
     
@@ -432,7 +433,7 @@ size_t ProcessParser::getNumberOfCores() {
             istringstream buf(line);
             istream_iterator<string> beg(buf), end;
             vector<string> values(beg, end);
-            result = size_t(stoi(values[3]));
+            result = (stoi(values[3]));
             return result;
         }
     } 
@@ -470,7 +471,7 @@ bool ProcessParser::isPidExisting(string pid) {
 }
 
 /**
- * @function: get the cpu active time .
+ * @function: get the cpu active time from cpu information vector .
  * @param:  vector<string> value. the cpu information string vector.
  * @return: float. cpu active time.
  */
