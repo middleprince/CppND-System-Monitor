@@ -81,9 +81,9 @@ string Process::getProcess(){
 
     return (this->pid + "    " //TODO: finish the string! this->user + "   "+ mem...cpu...upTime...;
             + this->user + "     " 
-            + this->mem.substr(0,4) + "    " 
-            + this->cpu.substr(0,4) + "     " 
-            + this->upTime.substr(0,4) + "    " 
+            + this->mem.substr(0,5) + "    " 
+            + this->cpu.substr(0,5) + "     " 
+            + this->upTime.substr(0,5) + "    " 
             + this->cmd.substr(0,10) + "... "); 
 }
 
