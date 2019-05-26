@@ -215,7 +215,7 @@ string ProcessParser::getProcUser(string pid) {
    Util::getStream("/etc/passwd", instream);
    name = ("x:" + result);
    while(getline(instream, line)) {
-        if(line.find(name) != string::npos) { 
+        if(line.find(name) != std::string::npos) { 
             result = line.substr(0, line.find(":"));
             return result;
         }
