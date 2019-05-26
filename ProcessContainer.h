@@ -26,7 +26,8 @@ void ProcessContainer::refreshList(){
     this->_list.clear();
     for (auto pid : pidList){
         Process proc(pid);
-        this->_list.push_back(proc);
+        if (stoi(proc.getUpTime()) > 0)
+            this->_list.push_back(proc);
     }
 }
 
