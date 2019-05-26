@@ -84,7 +84,7 @@ string Process::getProcess(){
             + this->mem.substr(0,5) + "   " 
             + this->cpu.substr(0,5) + "   " 
             + this->upTime.substr(0,5) + "   " 
-            + this->cmd.substr(0,10) + "... "); 
+            + this->cmd.substr(0,10) + " "); 
 }
 
 #endif
