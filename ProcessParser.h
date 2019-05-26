@@ -197,7 +197,7 @@ string ProcessParser::getCpuPercent(string pid) {
  */
 string ProcessParser::getProcUser(string pid) {
    string line;
-   string result = " ";
+   string result;
    string name = "Uid:";
    ifstream instream;
    Util::getStream((Path::basePath() + pid + Path::statusPath()), instream);
@@ -220,7 +220,7 @@ string ProcessParser::getProcUser(string pid) {
             return result;
         }
    }
-   return " ";
+   return "    ";
 }
 
 /**
