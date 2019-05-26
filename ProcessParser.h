@@ -235,7 +235,7 @@ vector<string> ProcessParser::getSysCpuPercent(string coreNumber) {
     ifstream instream;
     Util::getStream((Path::basePath() + Path::statPath()), instream);
     while(getline(instream, line)) {
-        if(name.compare(0, name.size(), name) == 0) {
+        if(line.compare(0, name.size(), name) == 0) {
             istringstream buf(line); 
             istream_iterator<string> beg(buf), end;
             vector<string> values(beg, end);
