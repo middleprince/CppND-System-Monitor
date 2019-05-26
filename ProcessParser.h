@@ -213,7 +213,7 @@ string ProcessParser::getProcUser(string pid) {
    }
    // to retrieve user name by UID form /etc/passwd
    Util::getStream("/etc/passwd", instream);
-   name = "x:" + result;
+   name = ("x:" + result);
    while(getline(instream, line)) {
         if(line.find(name) != string::npos) { 
             result = line.substr(0, line.find(":"));
