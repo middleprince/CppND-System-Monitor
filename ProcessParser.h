@@ -199,7 +199,7 @@ string ProcessParser::getProcUser(string pid) {
    string line;
    string result;
    string name = "Uid:";
-   ifstream instream;
+   ifstream instream, instream1;
    Util::getStream((Path::basePath() + pid + Path::statusPath()), instream);
    while(getline(instream, line)) {
        if(line.compare(0, name.size(), name) == 0) {
@@ -212,9 +212,10 @@ string ProcessParser::getProcUser(string pid) {
        }
    }
    // to retrieve user name by UID form /etc/passwd
-   Util::getStream("/etc/passwd", instream);
+   
+   Util::getStream("/etc/passwd", instream1);
    name = ("x:" + result);
-   while(getline(instream, line)) {
+   while(getline(instream1, line)) {
         if(line.find(name) != std::string::npos) { 
             result = line.substr(0, line.find(":"));
             return result;
