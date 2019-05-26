@@ -179,12 +179,12 @@ string ProcessParser::getCpuPercent(string pid) {
     float stime = stof(values[14]);
     float cutime = stof(values[15]);
     float cstime = stof(values[16]);
-    float starttime = stof(values[21]);
+    float start_time = stof(values[21]);
     float uptime = ProcessParser::getSysUpTime();
 
     float freq = sysconf(_SC_CLK_TCK);
     float total_run_time = utime + stime + cutime + cstime;
-    float system_seconds = uptime - starttime/freq;
+    float system_seconds = uptime - start_time/freq;
     result = 100.0 * ((total_run_time/freq) / system_seconds);
     return to_string(result);
 
